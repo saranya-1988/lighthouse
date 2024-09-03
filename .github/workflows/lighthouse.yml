@@ -25,9 +25,12 @@ jobs:
           urls: https://www.applydigital.com/  # Main URL
           uploadArtifacts: true
           artifactName: lighthouse-results-${{ github.run_id }}-${{ matrix.form_factor }}
-          
+      - name: List files
+        run: ls -la
       - name: Upload artifact 
         uses: actions/upload-artifact@v3
         with:
           name: lighthouse-results-${{ github.run_id }}-${{ matrix.form_factor }}
           path: lighthouse*.json  # Matches any Lighthouse JSON report
+          if-no-files-found: warn
+          include-hidden-files: false
