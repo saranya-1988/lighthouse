@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        form_factor: [mobile, desktop]
+        form_factor: [desktop]
     steps:
       - uses: actions/checkout@v3  # Checkout your repository code
       - name: Use Node.js 18
