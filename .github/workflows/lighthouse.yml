@@ -23,6 +23,7 @@ jobs:
         uses: treosh/lighthouse-ci-action@v12  # Consider using treosh/lighthouse-ci-action@v12 for newer Lighthouse versions
         with:
           urls: https://www.applydigital.com/  # Main URL
+          configPath: './lighthouserc.json'
           uploadArtifacts: true
           artifactName: lighthouse-results-${{ github.run_id }}-${{ matrix.form_factor }}
       - name: List files
