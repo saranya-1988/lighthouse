@@ -22,10 +22,9 @@ jobs:
       - name: Run Lighthouse scans
         uses: treosh/lighthouse-ci-action@v12  # Consider using treosh/lighthouse-ci-action@v12 for newer Lighthouse versions
         with:
-          urls: |
-            https://www.google.com/  # Main URL
-            uploadArtifacts: true
-            extraParams: "--max-wait-for-load=60000"
+          urls: https://www.google.com/  # Main URL
+          uploadArtifacts: true
+          extraParams: "--max-wait-for-load=60000"
           
       - name: Upload artifact (optional)
         uses: actions/upload-artifact@v3
