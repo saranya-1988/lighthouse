@@ -22,12 +22,12 @@ jobs:
       - name: Run Lighthouse scans
         uses: treosh/lighthouse-ci-action@v12  # Consider using treosh/lighthouse-ci-action@v12 for newer Lighthouse versions
         with:
-          urls: https://www.google.com/  # Main URL
+          urls: https://www.applydigital.com/  # Main URL
           uploadArtifacts: true
-          artifactName: lighthouse-results-${{ github.run_id }} 
+          artifactName: lighthouse-results-${{ github.run_id }}-${{ matrix.form_factor }}
           
       - name: Upload artifact 
         uses: actions/upload-artifact@v3
         with:
-          name: lighthouse-results
+          name: lighthouse-results-${{ github.run_id }}-${{ matrix.form_factor }}
           path: lighthouse*.json  # Matches any Lighthouse JSON report
