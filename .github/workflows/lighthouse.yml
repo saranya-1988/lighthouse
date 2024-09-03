@@ -24,9 +24,9 @@ jobs:
         with:
           urls: https://www.google.com/  # Main URL
           uploadArtifacts: true
-          extraParams: "--max-wait-for-load=60000"
+          artifactName: lighthouse-results-${{ github.run_id }} 
           
-      - name: Upload artifact (optional)
+      - name: Upload artifact 
         uses: actions/upload-artifact@v3
         with:
           name: lighthouse-results
