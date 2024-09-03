@@ -1,0 +1,24 @@
+name: Lighthouse CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+jobs:
+  lighthouse:
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        form_factor: [mobile, desktop]
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Run Lighthouse
+      uses: treosh/lighthouse-ci-action@v3
+      with:
+        url: https://www.applydigital.com/
+        formFactor: ${{ matrix.form_factor }}
+        configPath: ".lighthouserc.json"
+        outputPath: "./lighthouse-results"
