@@ -20,7 +20,7 @@ jobs:
       - name: Install Lighthouse
         run: npm install -g lighthouse lighthouse-cli
       - name: Run Lighthouse scans
-        uses: treosh/lighthouse-ci-action@v13  # Consider using treosh/lighthouse-ci-action@v12 for newer Lighthouse versions
+        uses: treosh/lighthouse-ci-action@v12  # Consider using treosh/lighthouse-ci-action@v12 for newer Lighthouse versions
         with:
           urls: |
             https://www.applydigital.com/  # Main URL
