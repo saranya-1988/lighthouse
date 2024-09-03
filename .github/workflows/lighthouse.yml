@@ -23,12 +23,9 @@ jobs:
         uses: treosh/lighthouse-ci-action@v12  # Consider using treosh/lighthouse-ci-action@v12 for newer Lighthouse versions
         with:
           urls: |
-            www.applydigital.com  # Main URL
-            www.applydigital.com/?view=mobile  # Mobile-specific URL (adjust the query string as needed)
-          lighthouseFlags: |
-            --emulated-mobile-device="Motorola Moto G4 Plus"  # Emulate a specific mobile device
-          output: json  # Optional, specify output format (defaults to html)
-
+            https://www.applydigital.com  # Main URL
+            uploadArtifacts: true
+          
       - name: Upload artifact (optional)
         uses: actions/upload-artifact@v3
         with:
