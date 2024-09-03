@@ -32,5 +32,5 @@ jobs:
         if: always()
         with:
           name: lighthouse-results-${{ github.run_id }}-${{ matrix.form_factor }}
-          path: .lighthouseci/
+          path: ./lighthouseci
           retention-days: 30
