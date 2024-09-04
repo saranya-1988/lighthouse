@@ -1,0 +1,14 @@
+{
+  "extends": "lighthouse:default",
+  "settings": {
+    "onlyCategories": ["performance"],
+    "emulatedFormFactor": "mobile",
+    "screenEmulation": {
+      "mobile": true,
+      "width": 375,
+      "height": 667,
+      "deviceScaleFactor": 2,
+      "disabled": false
+    }
+  }
+}
