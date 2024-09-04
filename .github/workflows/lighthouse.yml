@@ -10,7 +10,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        form_factor: [desktop]
+        form_factor: [desktop,mobile]
     steps:
       - uses: actions/checkout@v3  # Checkout your repository code
       - name: Use Node.js 18
@@ -34,4 +34,4 @@ jobs:
         with:
           name: lighthouse-results-${{ github.run_id }}-${{ matrix.form_factor }}
           path: ./lighthouseci
-          retention-days: 30
+          retention-days: 10
