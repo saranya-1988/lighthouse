@@ -1,5 +1,4 @@
 name: Lighthouse CI
-
 on:
   push:
     branches:
@@ -17,26 +16,21 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-          
-      - name: Install Lighthouse CI
-        run: npm install -g @lhci/cli
-
-      - name: Set FORM_FACTOR Environment Variable
-        run: echo "FORM_FACTOR=${{ matrix.form_factor }}" >> $GITHUB_ENV
-
-      - name: Run Lighthouse CI
-        run: lhci autorun --config=./lighthouserc.ci.js
-        env:
-          FORM_FACTOR: ${{ matrix.form_factor }}
-
+      - name: Install Lighthouse
+        run: npm install -g lighthouse lighthouse-cli
+      - name: Run Lighthouse scans
+        uses: treosh/lighthouse-ci-action@v12  # Consider using treosh/lighthouse-ci-action@v12 for newer Lighthouse versions
+        with:
+          urls: https://www.applydigital.com/  # Main URL
+          configPath: "./lighthouserc.${{ matrix.form_factor }}.json"
+          uploadArtifacts: true
+          artifactName: lighthouse-results-${{ github.run_id }}-${{ matrix.form_factor }}
       - name: List files
-        run: ls -la ./lighthouseci
-
-      - name: Upload Lighthouse Results Artifact
+        run: ls -la
+      - name: Upload artifact
         uses: actions/upload-artifact@v4
         if: always()
         with:
           name: lighthouse-results-${{ github.run_id }}-${{ matrix.form_factor }}
           path: ./lighthouseci
           retention-days: 10
- 
